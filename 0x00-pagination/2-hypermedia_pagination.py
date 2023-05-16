@@ -47,6 +47,9 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
+        '''
+        get page method
+        '''
         assert type(page) is int and page > 0
         assert type(page_size) is int and page_size > 0
         data = self.dataset()
@@ -58,6 +61,9 @@ class Server:
             return []
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> dict:
+        '''
+        get hyper method
+        '''
         data_len = len(self.dataset())
         data = self.get_page(page, page_size)
         response = {
