@@ -25,8 +25,10 @@ class Config:
 
 app = Flask(__name__)
 app.config.from_object(Config)
+babel = Babel(app)
 
 
+@babel.localeselector
 def get_locale():
     '''
     get the locale language
@@ -67,9 +69,6 @@ def before_request():
         g.user = user
     else:
         g.user = None
-
-
-babel = Babel(app,  locale_selector=get_locale)
 
 
 @app.route('/', strict_slashes=False)
